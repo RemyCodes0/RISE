@@ -1,0 +1,33 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}question{%endblock%}
+
+
+{%block content%}
+<div class="mx-auto p-2" style="width: 500px;">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+<a href="{% url 'play' user.id%}"><img src="{{back.back.url}}" alt="No image" width="40"></a><br>
+<div class="text-sm-center"><h2>{{stage.level}}</h2></div><br>
+{% if message%}
+<h3 class="alert alert-danger">Incorrect. Try again</h3>
+{%endif%}
+
+<div class="card" style="width: 450px;">
+<img src="{{stage.image.url}}" alt="No image" width="450" height="360">
+<div class="card-body">
+{{stage.description}}
+</div>
+</div>
+<br>
+<div class="text-sm-center">
+<form action="{% url 'question' stage.id%}" method="post">
+    {% csrf_token %}
+    <input class="form-control" id="floatingInput" placeholder="Your Answer" name="answer">
+    <input type="submit" class="btn btn-outline-primary"  class="btn btn-primary" value="Ok">
+</form>
+
+<a href="{%url 'answer' stage.id%}"><img src="{{back.idea.url}}" alt="No image" width="30"></a>
+</div>
+
+</div>
+</div>
+{%endblock%}

@@ -1,0 +1,31 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}Play{%endblock%}
+
+{%block content%}
+<br>
+<br>
+<br>
+
+<div class="mx-auto p-2" style="width: 500px;">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded"><div class="container">
+      
+<a href="{% url 'index'%}"><img src="{{back.back.url}}" alt="No image" width="40"></a><br><br>
+<div class="text-sm-center" >
+
+            <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{percentage}}%"></div>
+            </div>
+            <br>
+            <br>
+{% for stag in stage%}
+    {% for valids in correct %}
+        {% if stag.level == valids %}
+    <a href="{% url 'question' stag.id%}"><button class="btn btn-primary btn-lg">{{stag.level}}</button></a>
+   
+        {%endif%}
+    {%endfor%}
+{%endfor%}
+</div>
+</div>
+</div>
+{%endblock%}

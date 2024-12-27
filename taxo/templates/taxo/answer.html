@@ -1,0 +1,65 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}Answer{%endblock%}
+
+
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<br>
+    
+      
+<div class="mx-auto p-2" style="width: 500px;">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="text-sm-center">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{stage.image.url}}" class="img-fluid rounded-start" alt="No Image" width="200">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            {{stage.description}}<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="alert alert-info">   <br> 
+                        <h5>{{stage.answer}}</h5><br>
+                    </div>
+                    <div class="card mb-3" style="max-width: 500px;">
+                   
+                        <div class="card-body">
+                            
+                           <img src="{{back.idea.url}}" alt="No Image" width="20"> <h3>DID YOU KNOW?</h3>
+                            <hr>
+                            {{stage.know}}<br>
+                        </div>
+                        </div>
+                    
+
+{% if next == 0 %}
+<a href="{%url 'play'%}"><button type="button" class="btn btn-outline-primary">Back to list</button></a>
+{%else%}
+<a href="{% url 'question' next.id%}"><button type="button" class="btn btn-outline-primary">Next</button></a>
+{%endif%}
+</div>
+</div>
+</div>
+
+<!---<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>-->
+{%endblock%}

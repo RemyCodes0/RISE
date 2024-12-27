@@ -1,0 +1,30 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}Home{%endblock%}
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="mx-auto p-2" style="width: 500px;">
+  <div class="shadow p-3 mb-5 bg-body-tertiary rounded"><div class="container">
+    <div class="text-sm-center">
+     
+{% if user.is_authenticated%}
+<h1>Welcome {{user}}</h1>
+{%else%}
+<h1>Welcome</h1>
+{%endif%}
+<br>
+<br>
+<h4><a href="{% url 'play' user.id%}"> <button class="btn btn-primary btn-lg">Play</button></a></h4><br>
+<h4><a href="{% url 'option'%}"><button class="btn btn-primary btn-lg">Option</button></a></h4><br>
+<h4><a href="{% url 'about'%}"><button class="btn btn-primary btn-lg">About</button></a></h4><br>
+{% if user.is_superuser%}
+<h4><a href="{% url 'admin:index'%}"><button class="btn btn-primary btn-lg">Administration</button></a></h4>
+{% endif %}
+</div>
+</div>
+</div>
+{%endblock%}
+

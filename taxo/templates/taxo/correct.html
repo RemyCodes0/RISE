@@ -1,0 +1,30 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}Correct page{%endblock%}
+
+
+{%block content%}
+<br>
+<br>
+<br>
+
+<div class="mx-auto p-2" style="width: 500px;">
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="text-sm-center">
+<h1><img src="{{back.good.url}}" alt="No image" width="200"></h1><br>
+
+<div class="card mb-3" style="max-width: 500px;">         
+    <div class="card-body"> 
+       <img src="{{back.idea.url}}" alt="No Image" width="20"> <h3>DID YOU KNOW?</h3>
+        <hr>
+{{stage.know}}<br> 
+</div>
+</div>
+{% if next == 0 %}
+<a href="{%url 'play' user.id%}"><button class="btn btn-outline-primary">Back to list</button></a>
+{%else%}
+<a href="{% url 'question' next.id%}"><button class="btn btn-outline-primary">Next</button></a>
+        </div>
+    </div>
+</div>
+{%endif%}
+{%endblock%}

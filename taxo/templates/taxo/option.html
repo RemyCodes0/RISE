@@ -1,0 +1,26 @@
+{%extends 'taxo/layout.html'%}
+{%block title%}Option{%endblock%}
+
+{%block content%}
+<br>
+<a href="{% url 'index'%}"><img src="{{back.back.url}}" alt="No image" width="50"></a>
+<br>
+<br>
+<br>    
+<br>
+<br>
+<br>
+
+<div class="mx-auto p-2" style="width: 500px;">
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded"><div class="container">
+<div class="text-sm-center">
+<form action="{% url 'option'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary btn-lg" value="Reset progression">
+</form>
+<br>
+<a href="{% url 'logouts'%}"><button class="btn btn-primary btn-lg">Logout</button></a>
+</div>
+</div>
+    </div>
+{%endblock%}
