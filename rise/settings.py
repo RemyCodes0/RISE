@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,6 +84,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+DATABASES["default"]=dj_database_url.parse("postgresql://rise_db_izkn_user:VZIYKqRpIW19DXEhdixTO5KX85OqT4C7@dpg-ctnvip3tq21c73cpqq30-a.oregon-postgres.render.com/rise_db_izkn")
 
 
 # Password validation
