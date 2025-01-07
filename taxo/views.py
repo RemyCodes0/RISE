@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    if not request.user.is_authenticate:
+    if not request.user.is_authenticated:
         redirect('logins')
     else:
         questions = models.Question.objects.all() 
