@@ -6,13 +6,18 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    questions = models.Question.objects.all() 
-    all_questions =questions.count()
-    answered = models.Valid.objects.filter(user = request.user).count()
-    ratio = answered/all_questions
-    percentage = ratio*100
-    return render(request, "taxo/index.html", {'level': questions, "percentage":percentage})
+    if not request.user.is_authenticated:
+        return redirect('logins') 
+    questions = models.Question.objects.all()
+    all_questions = questions.count()
 
+    if all_questions == 0: 
+        ratio = 0
+    else:
+        answered = models.Valid.objects.filter(user=request.user).count()
+        ratio = answered / all_questions
+    percentage = ratio * 100
+    return render(request, "taxo/index.html", {'level': questions, "percentage": percentage })
 def play(request, user_id):
     
     if request.user.is_authenticated:
